@@ -1,19 +1,16 @@
 from dash import Dash, html, dash_table
 import pandas as pd
 
-# Incorporate data
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv')
+# Lê os dados do arquivo CSV e converte para um DataFrame do pandas
+df = pd.read_csv('precos_teclados.csv', encoding='UTF-8', delimiter=';')
 
-# Initialize the app
 app = Dash(__name__)
 
-# App layout
 app.layout = html.Div([
-    html.Div(children='My First App with Data'),
+    html.Div(children='Lista de dados'),
     dash_table.DataTable(data=df.to_dict('records'), page_size=10)
 ])
 
-# Run the app
 if __name__ == '__main__':
     app.run(debug=True)
 
